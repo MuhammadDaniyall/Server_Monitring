@@ -6,15 +6,15 @@ export default function login() {
   return (
     
 
-    <div style={{backgroundImage: `url(${loginBackground.src})` }} className={styles.BAckgroundimage}>
+    <div   style={{backgroundImage: `url(${loginBackground.src})` }} className={styles.BAckgroundimage}>
     <div className={styles.loginBox} >
         <h1 > Login</h1>
         <form method="post" action="dashboard">
-            <div className={'form-group'}>
+            <div className={`form-group`}>
                 <label for="username" style={{textAlign:'left', fontSize:'smaller'}}>Username</label>
                 <input type="text" name="username" id="username" placeholder="Username" />
             </div>
-            <div className={'form-group'}>
+            <div className={`form-group`}>
                 <label for="password" style={{textAlign:'left', fontSize: 'smaller'}}>Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter your Password" />
             </div>
