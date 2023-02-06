@@ -16,9 +16,9 @@ export default function dashboard() {
     <div className={`row`}>
       
       <div className={`col-lg-3 col-md-4 col-sm-6`}>
-        <div className={`panel panel-primary`}>
-          <div className={`panel-heading`}>Linux Server</div>
-          <div className={`panel-body`}>
+        <div className={`card bg-primary`}>
+          <div className={`card-heading`}>Linux Server</div>
+          <div className={`card-body`}>
             <ul>
               <li>Red Hat Enterprise Linux</li>
               <li>CentOS</li>
@@ -28,9 +28,9 @@ export default function dashboard() {
         </div>
       </div>
       <div className={`col-lg-3 col-md-4 col-sm-6`}>
-        <div className={`panel panel-primary`}>
-          <div className={`panel-heading`}>Windows Server</div>
-          <div className={`panel-body`}>
+        <div className={`card bg-primary`}>
+          <div className={`card-heading`}>Windows Server</div>
+          <div className={`card-body`}>
             <ul>
               <li>Windows Server 2012</li>
               <li>Windows Server 2012</li>
@@ -41,9 +41,9 @@ export default function dashboard() {
       </div>
       
       <div className={`col-lg-3 col-md-4 col-sm-6`}>
-        <div className={`panel panel-primary`}>
-          <div className={`panel-heading`}>Linux Server</div>
-          <div className={`panel-body`}>
+        <div className={`card bg-primary`}>
+          <div className={`card-heading`}>Linux Server</div>
+          <div className={`card-body`}>
             <ul>
               <li>Red Hat Enterprise Linux</li>
               <li>CentOS</li>
@@ -54,9 +54,9 @@ export default function dashboard() {
       </div>
       
       <div className={`col-lg-3 col-md-4 col-sm-6`}>
-        <div className={`panel panel-primary`}>
-          <div className={`panel-heading`}>Windows Server</div>
-          <div className={`panel-body`}>
+        <div className={`card text-bg-primary`}>
+          <div className={`card-heading`}>Windows Server</div>
+          <div className={`card-body`}>
             <ul>
               <li>Windows Server 2012</li>
               <li>Windows Server 2012</li>
