@@ -6,7 +6,7 @@ export default function login() {
   return (
     
 
-    <div   style={{backgroundImage: `url(${loginBackground.src})` }} className={styles.BAckgroundimage}>
+    <div   style={{backgroundImage: `url(${loginBackground.src})`, height:`${loginBackground.height}px` }} className={styles.BAckgroundimage}>
     <div className={styles.loginBox} >
         <h1 > Login</h1>
         <form method="post" action="dashboard">

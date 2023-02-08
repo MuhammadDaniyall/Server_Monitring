@@ -1,6 +1,42 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
+import axios from 'axios';
 
 export default function dashboard() {
+
+const [serverData, setServerStatusData] = useState([])
+
+  function getAPI(){
+    fetch(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetAllServerData`)
+      .then(response => response.json())
+      .then(data => console.log(data.length,"data").catch(e=console.log(e,'Deatil error'))); 
+  }
+
+  const getServerMonitoringData = async () => {
+    console.log('How many times')
+    try {
+      const { data } = await axios.post(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetAllServerData`,
+        {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+     console.log(data,'Data ehe')
+    } catch (err) {
+      console.log(err, 'ERROR here=>')
+     
+    }
+  }
+
+  useEffect( () => {
+    // getAPI()
+ getServerMonitoringData()
+
+  }, []); // <- Add dependencies here
+
+
   return (
     <div style={{}}>
       <div className={`container`}>
