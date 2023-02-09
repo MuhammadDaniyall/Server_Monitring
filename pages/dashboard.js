@@ -1,6 +1,8 @@
 import React, {useEffect,useState} from 'react'
 import axios from 'axios';
-import { FiAirplay } from "react-icons/fi";
+import {  FiCpu,FiHardDrive } from "react-icons/fi";
+import {  BiTime } from "react-icons/bi";
+import {  CgSmartphoneRam } from "react-icons/cg";
 
 
 export default function dashboard() {
@@ -38,15 +40,35 @@ const [serverData, setServerStatusData] = useState([])
     {/* <h3>Server Landing Page</h3> */}
  
     <div className={`container`}>
-      <h3>Our servers that are available:</h3>
+      <h3>FlowHCM All Servers Status</h3>
       
     </div>
   </div>
 <div style={{display:'flex', flexWrap:"wrap"}}>
-  <div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
-    <h4>Server name</h4>
-    <div style={{border: 'solid #000', height:'40px', width: '30px'}}>
-    <FiAirplay />
+  <div style={{ height:'150px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px',
+background: '#dbd7f0',
+// boxShadow:'8px 8px 7px #4732a2,-8px -8px 7px #553cc2'
+
+}}>
+    <h4 style={{marginLeft:'5px', color:'#fff'}}>Server name</h4>
+    <div style={{display:'flex', flexDirection:'row', marginLeft: '15px', alignItems:'center',marginTop:'5px'}}>
+    <FiCpu color='#ff7750'  />
+    <h6 style={{marginLeft:'10px',marginBottom:'.1rem' }}>CUP %</h6>
+    </div>
+
+    <div style={{display:'flex', flexDirection:'row', marginLeft: '15px', alignItems:'center',marginTop:'5px'}}>
+    <CgSmartphoneRam  color='#ff7750'/>
+    <h6 style={{marginLeft:'10px',marginBottom:'.1rem' }}>CUP %</h6>
+    </div>
+
+    <div style={{display:'flex', flexDirection:'row', marginLeft: '15px', alignItems:'center',marginTop:'5px'}}>
+    <FiHardDrive  color='#ff7750'/>
+    <h6 style={{marginLeft:'10px',marginBottom:'.1rem' }}>CUP %</h6>
+    </div>
+
+    <div style={{display:'flex', flexDirection:'row', marginLeft: '15px', alignItems:'center',marginTop:'5px'}}>
+    <BiTime color='#ff7750'/>
+    <h6 style={{marginLeft:'10px',marginBottom:'.1rem' }}>CUP %</h6>
     </div>
 </div>
 <div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
