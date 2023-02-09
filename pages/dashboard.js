@@ -1,5 +1,7 @@
 import React, {useEffect,useState} from 'react'
 import axios from 'axios';
+import { FiAirplay } from "react-icons/fi";
+
 
 export default function dashboard() {
 
@@ -31,7 +33,7 @@ const [serverData, setServerStatusData] = useState([])
 // console.log(serverData,'serverData=>');
 
   return (
-    <div style={{}}>
+    <div style={{backgroundColor:'#fafbfe'}}>
       <div className={`container`}>
     {/* <h3>Server Landing Page</h3> */}
  
@@ -40,11 +42,32 @@ const [serverData, setServerStatusData] = useState([])
       
     </div>
   </div>
-
-  <div style={{border: 'solid #000', height:'40px', width: '40px'}}>
-
+<div style={{display:'flex', flexWrap:"wrap"}}>
+  <div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+    <div style={{border: 'solid #000', height:'40px', width: '30px'}}>
+    <FiAirplay />
+    </div>
 </div>
-  
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+<div style={{border: 'solid #000', height:'140px', width: '320px', marginLeft: '15px', borderRadius:'5px', marginTop:'5px'}}>
+    <h4>Server name</h4>
+</div>
+</div>
   <div className={`container-fluid`}>
     <div className={`row`}>
       {serverData.map((item, index) => (
