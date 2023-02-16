@@ -23,7 +23,7 @@ export default function dashboard() {
       setServerStatusData(data)
       //  console.log(data,'Data ehe')
     } catch (err) {
-      console.log(err, 'ERROR here=>')
+      console.log(err, 'Error Server Detail')
 
     }
   }
