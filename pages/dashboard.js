@@ -3,9 +3,12 @@ import axios from 'axios';
 import { FiCpu, FiHardDrive, FiArrowRight } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { CgSmartphoneRam } from "react-icons/cg";
-
+import { useRouter } from 'next/router'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function dashboard() {
+  const router = useRouter()
 
   const [serverData, setServerStatusData] = useState([])
   const [screenHeight, setScreenHeight] = useState(0)
@@ -23,6 +26,7 @@ export default function dashboard() {
       setServerStatusData(data)
       //  console.log(data,'Data ehe')
     } catch (err) {
+      alert(err)
       console.log(err, 'Error Server Detail')
 
     }
@@ -32,7 +36,7 @@ export default function dashboard() {
     // getAPI()
     getServerMonitoringData()
     setScreenHeight(window.innerHeight)
-  }, []); // <- Add dependencies here
+  }, [])
 
 console.log(serverData);
   return (
@@ -76,15 +80,21 @@ console.log(serverData);
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.createdOn}</h6>
             </div>
           </div>
-      <div style={{display:'flex', alignItems:'center',paddingLeft:'50px'}} >
-        <a href="http://192.168.100.177:3000/serverDetails">
+      <div style={{display:'flex', alignItems:'center',paddingLeft:'50px'}} 
+      onClick={() => router.push('/serverDetails')}
+      >
+        {/* <a href="http://192.168.100.177:3000/serverDetails"> */}
           <FiArrowRight color='#ff7750' size={30} />
-          </a>
+          {/* </a> */}
           </div>
           </div>
         ))}
+    {!serverData.length &&  <Skeleton style={{height: '150px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
+            background: '#dbd7f0'}} count={16} inline={true} />}
 
       </div>
+
+      
 
       {/* <div className={`container-fluid`}>
     <div className={`row`}>

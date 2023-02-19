@@ -12,11 +12,10 @@ export default function serverDetails() {
   
 
   const getServerMonitoringData = async () => {
-  
     try {
-      const { data } = await axios.get(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetAllServerData`)
+      const { data } = await axios.post(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetServerHistory?serverMasterID=1`,{})
       setServerStatusData(data)
-      //  console.log(data,'Data ehe')
+       console.log(data,'Data ehe')
     } catch (err) {
       console.log(err, 'Error server details data=>')
 
@@ -33,6 +32,21 @@ export default function serverDetails() {
 
       </div>
 
+  <h1>{serverData[0]?.serverName}</h1>
+      {serverData.map((item, index) => (
+  
+        <div>
+          <br></br>
+         <h5>{item.cpuStatus}</h5>
+         <h5>{item.diskStatus}</h5>
+         <h5>{item.memoryStatus}</h5>
+         <h5>{item.createdOn}</h5>
+
+
+
+
+      </div>
+  ))}
 
     </div>
   )
