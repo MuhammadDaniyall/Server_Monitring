@@ -35,6 +35,9 @@ export default function dashboard() {
   useEffect(() => {
     // getAPI()
     getServerMonitoringData()
+    setTimeout(() => {
+      getServerMonitoringData()
+    }, 60000);
     setScreenHeight(window.innerHeight)
   }, [])
 
