@@ -1,43 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-// import faker from 'faker';
-import { faker } from '@faker-js/faker';
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { Chart as ChartJS } from 'chart.js/auto'
+import {Line, Chart} from 'react-chartjs-2';
 
-export const options = {
-  plugins: {
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart - Stacked',
-    },
-  },
-  responsive: true,
-  scales: {
-    x: {
-      stacked: true,
-    },
-    y: {
-      stacked: true,
-    },
-  },
-};
+// import faker from 'faker';
+// import { faker } from '@faker-js/faker';
+
 
 
 
@@ -61,7 +29,7 @@ serverName: "SERVER70"
 
   useEffect(() => {
     setScreenHeight(window.innerHeight);
-    getServerMonitoringData()
+   // getServerMonitoringData()
   }, [])
   
 
@@ -77,6 +45,33 @@ serverName: "SERVER70"
     }
   }
 
+  const data = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
+      {
+        label: 'My First dataset',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [65, 59, 80, 81, 56, 55, 40]
+      }
+    ]
+  };
+
 // cpuStatus: 0,
 // createdOn: "2023-02-16 09:26:43 AM",
 // diskStatus: 0,
@@ -84,29 +79,11 @@ serverName: "SERVER70"
 // serverMasterId: 1,
 // serverName: "SERVER70"
 
-const labels = serverData.map((d)=>d.createdOn)
+// const labels = serverData.map((d)=>d.createdOn)
+/// data: labels.map((d,i) => d[i].memoryStatus),
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
- const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map((d,i) => d[i].memoryStatus),
-      backgroundColor: 'rgb(255, 99, 132)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      backgroundColor: 'rgb(75, 192, 192)',
-    },
-    // {
-    //   label: 'Dataset 3',
-    //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-    //   backgroundColor: 'rgb(53, 162, 235)',
-    // },
-  ],
-};
+
 console.log(data.datasets,'datasets=>');
   return (
     <div style={{ backgroundColor: '#fafbfe', height:`${screenHeight}px`, display:'flex', flexDirection:'column' }}>
@@ -115,10 +92,15 @@ console.log(data.datasets,'datasets=>');
           <h2 style={{color:'#fff',marginLeft:'15px'}}>FlowHCM Servers Status Deatil</h2>
           <div style={{height:'30px', width:'30px', borderRadius:'15px', backgroundColor:'#fff',marginRight:'15px'}}></div>
 
-      </div>
+        
+    </div>
 
-      <Bar options={options} data={data} />;
 
+    <Line
+      data={data}
+      width={400}
+      height={400}
+    />  
   {/* <h1>{serverData[0]?.serverName}</h1>
       {serverData.map((item, index) => (
   
