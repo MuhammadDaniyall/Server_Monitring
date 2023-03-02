@@ -47,7 +47,6 @@ export default function dashboard() {
     setScreenHeight(window.innerHeight)
   }, [])
 
-console.log(serverData);
   return (
     <div style={{ backgroundColor: '#fafbfe', height:`${screenHeight}px`, display:'flex', flexDirection:'column' }}>
       <div style={{backgroundColor:'#5036b1', height:'50px', flexDirection:'row', display:'flex',justifyContent:'space-between', alignItems:"center"}}>
@@ -63,10 +62,13 @@ console.log(serverData);
         {serverData.map((item, index) => (
           <div key={index} style={{
             height: '185px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
-            background: '#dbd7f0', flexDirection:'row',display:'flex'
+            background: '#dbd7f0', flexDirection:'row',display:'flex',cursor:'pointer'
             // boxShadow:'8px 8px 7px #4732a2,-8px -8px 7px #553cc2'
 
-          }}>
+          }} onClick={() => 
+           {localStorage.setItem('serverMasterID', item.serverMasterId),
+             router.push('/serverDetails')}
+          }>
             <div style={{}}>
             <h4 style={{ marginLeft: '10px', color: '#5036b1',marginTop:'5px' }}>{item.serverName}</h4>
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
@@ -86,7 +88,7 @@ console.log(serverData);
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <RxReader data-tooltip-content="Hard Disk Read"  className="my-anchor-element" color='#ff7750' />
-              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskReadStatus} KB/s</h6>
+              <h6 style={{ marginLeft: '8px', marginBottom: '.1rem' }}>{item.diskReadStatus} KB/s</h6>
               <TfiWrite data-tooltip-content="Hard Disk Write"  className="my-anchor-element" color='#ff7750' style={{marginLeft:'10px'}} />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskWriteStatus} KB/s</h6>
 
@@ -97,7 +99,6 @@ console.log(serverData);
             </div>
           </div>
       <div style={{display:'flex', alignItems:'center',paddingLeft:'50px'}} 
-      onClick={() => router.push('/serverDetails')}
       >
         {/* <a href="http://192.168.100.177:3000/serverDetails"> */}
           <FiArrowRight color='#ff7750' size={30} />
