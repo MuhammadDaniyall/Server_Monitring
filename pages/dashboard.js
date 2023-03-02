@@ -3,6 +3,12 @@ import axios from 'axios';
 import { FiCpu, FiHardDrive, FiArrowRight } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { CgSmartphoneRam } from "react-icons/cg";
+import { RxReader } from "react-icons/rx";
+import { TfiWrite } from "react-icons/tfi";
+import { Tooltip } from 'react-tooltip'
+
+import 'react-tooltip/dist/react-tooltip.css'
+
 import { useRouter } from 'next/router'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -56,7 +62,7 @@ console.log(serverData);
       <div style={{ display: 'flex', flexWrap: "wrap", marginTop:'10px' }}>
         {serverData.map((item, index) => (
           <div key={index} style={{
-            height: '150px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
+            height: '185px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
             background: '#dbd7f0', flexDirection:'row',display:'flex'
             // boxShadow:'8px 8px 7px #4732a2,-8px -8px 7px #553cc2'
 
@@ -64,22 +70,29 @@ console.log(serverData);
             <div style={{}}>
             <h4 style={{ marginLeft: '10px', color: '#5036b1',marginTop:'5px' }}>{item.serverName}</h4>
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
-              <FiCpu color='#ff7750' />
+              <FiCpu data-tooltip-content="CPU"  className="my-anchor-element" color='#ff7750' />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.cpuStatus} %</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
-              <CgSmartphoneRam color='#ff7750' />
+              <CgSmartphoneRam data-tooltip-content="RAM"  className="my-anchor-element" color='#ff7750' />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.memoryStatus} %</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
-              <FiHardDrive color='#ff7750' />
+              <FiHardDrive data-tooltip-content="Hard Disk"  className="my-anchor-element" color='#ff7750' />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskStatus}</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
-              <BiTime color='#ff7750' />
+              <RxReader data-tooltip-content="Hard Disk Read"  className="my-anchor-element" color='#ff7750' />
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskReadStatus} KB/s</h6>
+              <TfiWrite data-tooltip-content="Hard Disk Write"  className="my-anchor-element" color='#ff7750' style={{marginLeft:'10px'}} />
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskWriteStatus} KB/s</h6>
+
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
+              <BiTime data-tooltip-content="Time"  className="my-anchor-element" color='#ff7750' />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.createdOn}</h6>
             </div>
           </div>
@@ -98,6 +111,9 @@ console.log(serverData);
       </div>
 
       
+      <Tooltip anchorSelect=".my-anchor-element" place="top">
+  Hello world!
+</Tooltip>
 
       {/* <div className={`container-fluid`}>
     <div className={`row`}>
