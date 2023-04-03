@@ -5,6 +5,7 @@ import { BiTime } from "react-icons/bi";
 import { CgSmartphoneRam } from "react-icons/cg";
 import { RxReader } from "react-icons/rx";
 import { TfiWrite } from "react-icons/tfi";
+import { TbNetwork } from "react-icons/tb";
 import { Tooltip } from 'react-tooltip'
 
 import 'react-tooltip/dist/react-tooltip.css'
@@ -44,7 +45,7 @@ export default function Dashboard() {
     getServerMonitoringData()
     setTimeout(() => {
       getServerMonitoringData()
-    }, 60000);
+    }, 10000);
     setScreenHeight(window.innerHeight)
   }, [])
 
@@ -62,41 +63,45 @@ export default function Dashboard() {
       <div style={{ display: 'flex', flexWrap: "wrap", marginTop:'10px' }}>
         {serverData.map((item, index) => (
           <div key={index} style={{
-            height: '185px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
+            height: '205px', width: '320px', marginLeft: '15px', borderRadius: '5px', marginTop: '5px',
             background: '#dbd7f0', flexDirection:'row',display:'flex',cursor:'pointer'
             // boxShadow:'8px 8px 7px #4732a2,-8px -8px 7px #553cc2'
 
           }} onClick={() => 
-           {localStorage.setItem('serverMasterID', item.serverMasterId),
+           {localStorage.setItem('serverMasterID', item.serverName),
              router.push('/serverDetails')}
           }>
             <div style={{}}>
             <h4 style={{ marginLeft: '10px', color: '#5036b1',marginTop:'5px' }}>{item.serverName}</h4>
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <FiCpu data-tooltip-content="CPU"  className="my-anchor-element" color='#ff7750' />
-              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.cpuStatus} %</h6>
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.cpuStatus.toFixed(2)} %</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <CgSmartphoneRam data-tooltip-content="RAM"  className="my-anchor-element" color='#ff7750' />
-              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.memoryStatus} %</h6>
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.memoryStatus.toFixed(2)} %</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <FiHardDrive data-tooltip-content="Hard Disk"  className="my-anchor-element" color='#ff7750' />
-              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskStatus}</h6>
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskStatus.toFixed(2)}</h6>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <RxReader data-tooltip-content="Hard Disk Read"  className="my-anchor-element" color='#ff7750' />
-              <h6 style={{ marginLeft: '8px', marginBottom: '.1rem' }}>{item.diskReadStatus} KB/s</h6>
+              <h6 style={{ marginLeft: '8px', marginBottom: '.1rem' }}>{item.diskReadStatus.toFixed(2)} KB/s</h6>
               <TfiWrite data-tooltip-content="Hard Disk Write"  className="my-anchor-element" color='#ff7750' style={{marginLeft:'10px'}} />
-              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskWriteStatus} KB/s</h6>
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.diskWriteStatus.toFixed(2)} KB/s</h6>
 
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
               <BiTime data-tooltip-content="Time"  className="my-anchor-element" color='#ff7750' />
               <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.createdOn}</h6>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '15px', alignItems: 'center', marginTop: '5px' }}>
+              <TbNetwork data-tooltip-content="IPv4"  className="my-anchor-element" color='#ff7750' />
+              <h6 style={{ marginLeft: '10px', marginBottom: '.1rem' }}>{item.ipv4Address}</h6>
             </div>
           </div>
       <div style={{display:'flex', alignItems:'center',paddingLeft:'50px'}} 

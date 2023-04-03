@@ -29,7 +29,7 @@ export default function ServerDetails() {
 
   const getServerMonitoringData = async (serverMasterID) => {
     try {
-      const { data } = await axios.post(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetServerHistory?serverMasterID=${serverMasterID}`, {})
+      const { data } = await axios.post(`https://flowmonitoringapi.flowhcm.com/api/ServerStatus/GetServerHistory?serverName=${serverMasterID}`, {})
       setServerStatusData(data)
       console.log(data.length = 20, 'Data ehe')
     } catch (err) {
