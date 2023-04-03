@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 
 
-export default function serverDetails() {
+export default function ServerDetails() {
   const router = useRouter()
 
   const [screenHeight, setScreenHeight] = useState(0)

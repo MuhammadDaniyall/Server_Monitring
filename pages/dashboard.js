@@ -13,7 +13,8 @@ import { useRouter } from 'next/router'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-export default function dashboard() {
+export default function Dashboard() {
+  
   const router = useRouter()
 
   const [serverData, setServerStatusData] = useState([])

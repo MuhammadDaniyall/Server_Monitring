@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '../styles/main.module.css'
 import loginBackground from "../public/loginBackground.jpg"
 
-export default function login() {
+export default function Login() {
   const [screenHeight, setScreenHeight] = useState(0)
 
   useEffect(() => {
